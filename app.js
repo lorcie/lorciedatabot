@@ -32,7 +32,7 @@ app.get('/movies', async (req, res) => {
           released: movie.released,
           poster: movie.poster
         }));
-      res.set({ 'content-type': 'application/json; charset=utf-8' });
+      //res.set({ 'content-type': 'application/json; charset=utf-8' });
       res.send(movies);
     } catch (error) {
         console.log(error);
@@ -54,7 +54,7 @@ app.post('/query', async (req, res) => {
           released: movie.released,
           poster: movie.poster
         }));
-        res.set({ 'content-type': 'application/json; charset=utf-8' });
+        //res.set({ 'content-type': 'application/json; charset=utf-8' });
       res.send(movies);
     } catch (error) {
         console.log(error);
@@ -78,7 +78,9 @@ async function getEmbedding(query) {
     }, {
         headers: {
             'Authorization': `Bearer ${openai_key}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Content-Encoding': 'gzip',
+            'Accept-Encoding': 'gzip'
         }
     });
     
