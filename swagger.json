@@ -1,0 +1,87 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Lorcie Databot",
+      "description": "Lorcie Databot API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:8081",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Movies",
+        "description": "API for movies in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/movies": {
+          "get": {
+            "tags": ["Movies"],
+            "summary": "Get movies in system",
+            "responses": {
+              "200": {
+                "description": "OK",
+                "schema": {
+                  "$ref": "#/definitions/Movies"
+                }
+              }
+            }
+          }
+        },
+        "/query": {
+            "post": {
+              "tags": ["Movies"],
+              "description": "Create new user in system",
+              "parameters": [
+                {
+                  "name": "input",
+                  "in": "body",
+                  "description": "input that we want to query",
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              ],
+              "produces": ["application/json"],
+              "responses": {
+                "200": {
+                  "description": "Return Movies",
+                  "schema": {
+                    "$ref": "#/definitions/Movies"
+                  }
+                }
+              }
+            }
+        }
+      },
+      "definitions": {
+        "Movie": {
+          "required": ["title", "plot", "fullplot", "released"],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "plot": {
+                "type": "string"
+              },
+              "fullplot": {
+                "type": "string"
+              },
+              "released": {
+                "type": "string"
+              }
+          }
+        },
+        "Movies": {
+          "type": "array",
+          "$ref": "#/definitions/Movie"
+        }
+      }
+}
