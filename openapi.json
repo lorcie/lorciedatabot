@@ -1,0 +1,110 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Lorcie Databot",
+    "description": "Lorcie Databot API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8081/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Movies",
+      "description": "API for movies in the system"
+    }
+  ],
+  "paths": {
+    "/movies": {
+      "get": {
+        "tags": [
+          "Movies"
+        ],
+        "summary": "Get movies in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Movies"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/query": {
+      "post": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "Create new user in system",
+        "requestBody": {
+          "description": "input that we want to query",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "Return Movies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Movies"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "input"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Movie": {
+        "required": [
+          "fullplot",
+          "plot",
+          "released",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "plot": {
+            "type": "string"
+          },
+          "fullplot": {
+            "type": "string"
+          },
+          "released": {
+            "type": "string"
+          }
+        }
+      },
+      "Movies": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Movie"
+        }
+      }
+    }
+  }
+}
