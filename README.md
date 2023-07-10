@@ -17,6 +17,56 @@ The application backend Node JS module is hosted on  **Render** and associated t
 ![databot architecture](./screenshots/databot-architecture.png)
 
 
+## Local Development <a name="development"></a>
+
+1. Only for the first time, Clone the project locally, change into the directory, install the dependencies and init environment variables :
+
+```sh
+git clone https://github.com/lorcie/lorciedatabot.git
+```
+
+- go inside local backend directory
+
+```
+cd lorciedatabot
+```
+
+- If needed install node modules / librairies as follows
+
+```
+npm install
+```
+
+- If needed, to initiliaze environment variables correctly for evaluation purpose, copy .env.eval into .env
+
+windows>
+```
+copy .env.eval  .env
+```
+
+linux>
+```
+cp .env.eval  .env
+```
+
+2. Run local backend application
+
+in the application directory,
+
+- Start the backend application on local environment with following command. It will return local port 8081
+
+
+```
+npm run start
+```
+
+- on local browser, Run the backend application locally by browsing at following url :
+http://localhost:8081/movies
+
+- on Postman, it is also possible to test with POST method as follows :
+  in body tab , select x-www-form-urlencoded and initialize *input* key parameter with query value such as : *find some movies about civil war*
+
+
 ## Screenshots <a name="screenshots"></a>
 MongoDB Atlas Database Collection>
 

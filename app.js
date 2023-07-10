@@ -32,8 +32,6 @@ app.get('/movies', async (req, res) => {
           released: movie.released,
           poster: movie.poster
         }));
-      //res.set({ 'content-type': 'application/json; charset=utf-8' });
-      res.set({ 'Content-Encoding': 'gzip' });
       res.send(movies);
     } catch (error) {
         console.log(error);
@@ -55,7 +53,6 @@ app.post('/query', async (req, res) => {
           released: movie.released,
           poster: movie.poster
         }));
-      res.set({ 'Content-Encoding': 'gzip' });
       res.send(movies);
     } catch (error) {
         console.log(error);
