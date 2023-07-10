@@ -3,8 +3,9 @@
 # Table of contents
 1. [Introduction](#introduction)
 2. [Architecture](#architecture)
-3. [Screenshots](#screenshots)
-4. [Resources](#resources)
+3. [Local Development](#development)
+4. [Screenshots](#screenshots)
+5. [Resources](#resources)
 
 ## Introduction <a name="introduction"></a>
 Databot showcases intelligent search on **MongoDb** Atlas Database thanks to **OpenAI** Embeddings, generated on Database Triggers.
