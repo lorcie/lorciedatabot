@@ -20,49 +20,42 @@ app.use(
 
 app.get('/movies', async (req, res) => {
     const input = req.query.input || 'Propose movies about Civil War';
-    try {
-      const embedding = await getEmbedding(input);
+    return await search(input, res);
+});
 
-      const documents = await findSimilarDocuments(embedding);
-      let movies = documents
-        .map((movie) => ({
-          title: movie.title,
-          plot: movie.plot,
-          fullplot: movie.fullplot,
-          released: movie.released,
-          poster: movie.poster
-        }));
-      res.send(movies);
-    } catch (error) {
-        console.log(error);
-      res.status(400).send('Error while getting list of movies');
-    }
+app.get('/movies/:thematic', async (req, res) => {
+  const input = `find movies about ${req.params.thematic}`;
+  return await search(input, res);
 });
 
 app.post('/query', async (req, res) => {
     const input = req.body.input;
-    try {
-      const embedding = await getEmbedding(input);
-
-      const documents = await findSimilarDocuments(embedding);
-      let movies = documents
-        .map((movie) => ({
-          title: movie.title,
-          plot: movie.plot,
-          fullplot: movie.fullplot,
-          released: movie.released,
-          poster: movie.poster
-        }));
-      res.send(movies);
-    } catch (error) {
-        console.log(error);
-      res.status(400).send('Error while getting list of movies');
-    }
+    return await search(input, res);
 });
 
 app.listen(PORT, () => {
     console.log(`server started on port ${PORT}`);
 });
+
+async function search(input, res) {
+  try {
+    const embedding = await getEmbedding(input);
+
+    const documents = await findSimilarDocuments(embedding);
+    let movies = documents
+      .map((movie) => ({
+        title: movie.title,
+        plot: movie.plot,
+        fullplot: movie.fullplot,
+        released: movie.released,
+        poster: movie.poster
+      }));
+    return res.send(movies);
+  } catch (error) {
+      console.log(error);
+    return res.status(400).send('Error while getting list of movies');
+  }
+}
 
 async function getEmbedding(query) {
     // Define the OpenAI API url and key.

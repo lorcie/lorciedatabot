@@ -31,3 +31,5 @@ configurations/*
 
 .env
 public/speech*
+
+*.zip
