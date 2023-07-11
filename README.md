@@ -4,8 +4,9 @@
 1. [Introduction](#introduction)
 2. [Architecture](#architecture)
 3. [Local Development](#development)
-4. [Screenshots](#screenshots)
-5. [Resources](#resources)
+4. [Apigee Configuration](#apigee)
+5. [Atlas MongoDb Configuration](#atlas-mongodb)
+6. [Screenshots](#screenshots)
 
 ## Introduction <a name="introduction"></a>
 Databot showcases intelligent search on **MongoDb** Atlas Database thanks to **OpenAI** Embeddings, generated on Database Triggers.
@@ -66,6 +67,35 @@ http://localhost:8081/movies
 
 - on Postman, it is also possible to test with POST method as follows :
   in body tab , select x-www-form-urlencoded and initialize *input* key parameter with query value such as : *find some movies about civil war*
+
+## Apigee Configuration <a name="apigee"></a>
+
+- here are instructions to provision APigee with evaluation organization on your google cloud project (to be created if necessary) : 
+
+https://cloud.google.com/apigee/docs/api-platform/get-started/eval-orgs
+
+I have chosen *default* options, *Automatically allocate IP range* for network, *europe-west1* for region/location (please change according to your preference) and also *external* access routing, *wildcard DNS service* option for domain setting
+
+- here are instructions for creating an API proxy, i have chosen for simple discovery purpose  *Pass through (no authorization)*  policy security option :
+
+https://cloud.google.com/apigee/docs/api-platform/get-started/create-proxy
+
+- you can adapt the target endpoint url wto reach your public backend api.
+
+- you can now deploy the API proxy and test it with curl or browser with appropriate url (see environment group to have the DNS)  :
+
+https://cloud.google.com/apigee/docs/api-platform/get-started/test-proxy
+
+- I had to add some preflow instructions to fix *unsupprted content "br"* issues and create some revision update to deploy
+
+- I have exported my proxy definition from <yourproxy> develop tab (select last revision)
+
+- ![lorciedatabot revision 4 proxy exported bundle at uri ./lorciedatabot_rev4_2023_07_11.zip](./lorciedatabot_rev4_2023_07_11.zip)
+
+
+## Atlas MongoDb Configuration <a name="atlas-mongodb"></a>
+
+TO DO
 
 
 ## Screenshots <a name="screenshots"></a>
