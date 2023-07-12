@@ -228,4 +228,11 @@ Postman Query Post Test >
 
 ![Postman Query Post Test](./screenshots/databot-apigee-postman-query-post-test.png)
 
+Browser Query Get Test >
+
+- deploy/activate plugin such as *ModHeader* on Chrome Browser
+
+- set Header *Accept-Encoding* with value *grip,deflate*
+
+![Browser Query Get Test](./screenshots/databot-apigee-browser-modify-headers-accept-encodings-gzip-deflate-without-br-test.png)
 
