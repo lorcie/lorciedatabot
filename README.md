@@ -234,5 +234,7 @@ Browser Query Get Test >
 
 - set Header *Accept-Encoding* with value *grip,deflate*
 
+- then click on following get query url such as : https://34.149.196.13.nip.io/lorciedatabot/movies
+
 ![Browser Query Get Test](./screenshots/databot-apigee-browser-modify-headers-accept-encodings-gzip-deflate-without-br-test.png)
 
